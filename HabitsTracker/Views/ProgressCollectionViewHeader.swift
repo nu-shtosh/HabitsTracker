@@ -45,12 +45,7 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     private lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(cgColor: CGColor(
-            red: 247 / 255,
-            green: 247 / 255,
-            blue: 247 / 255,
-            alpha: 0.8)
-        )
+        view.backgroundColor = UIColor(named: "customBack")
         view.addSubview(motivationText)
         view.addSubview(percentText)
         view.addSubview(habitsProgressBar)

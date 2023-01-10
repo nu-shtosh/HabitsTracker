@@ -39,37 +39,37 @@ class HabitDetailViewController: UIViewController {
 }
 
 extension HabitDetailViewController {
-        private func setConstraints() {
-            NSLayoutConstraint.activate([
-                habitDetailTableView.topAnchor.constraint(equalTo: view.topAnchor),
-                habitDetailTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-                habitDetailTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-                habitDetailTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
-            ])
-        }
+    private func setConstraints() {
+        NSLayoutConstraint.activate([
+            habitDetailTableView.topAnchor.constraint(equalTo: view.topAnchor),
+            habitDetailTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            habitDetailTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            habitDetailTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+        ])
+    }
 
-        private func setupNavigationBar() {
-            let navBarAppearance = UINavigationBarAppearance()
-            title = habit?.name
-            navBarAppearance.backgroundColor = UIColor(named: "customBack")
-            navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
-            navigationController?.navigationBar.standardAppearance = navBarAppearance
-            navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-            navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
-            navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
-            navigationItem.rightBarButtonItem = UIBarButtonItem(
-                    barButtonSystemItem: .edit,
-                    target: self,
-                    action: #selector(editDidTapped)
-                )
-        }
+    private func setupNavigationBar() {
+        let navBarAppearance = UINavigationBarAppearance()
+        title = habit?.name
+        navBarAppearance.backgroundColor = UIColor(named: "customBack")
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
+        navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .edit,
+            target: self,
+            action: #selector(editDidTapped)
+        )
+    }
 
-        @objc private func editDidTapped() {
-            let editHabitVC = EditHabitViewController()
-            editHabitVC.hidesBottomBarWhenPushed = true
-            editHabitVC.habit = habit
-            navigationController?.show(editHabitVC, sender: .none)
-        }
+    @objc private func editDidTapped() {
+        let editHabitVC = EditHabitViewController()
+        editHabitVC.hidesBottomBarWhenPushed = true
+        editHabitVC.habit = habit
+        navigationController?.show(editHabitVC, sender: .none)
+    }
 }
 
 extension HabitDetailViewController: UITableViewDataSource, UITableViewDelegate {

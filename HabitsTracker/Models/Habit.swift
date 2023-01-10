@@ -181,7 +181,6 @@ public final class HabitsStore {
     }
 
     // MARK: - Private
-
     private init() {
         if userDefaults.value(forKey: "start_date") == nil {
             let startDate = calendar.date(from: calendar.dateComponents([.year, .month, .day], from: Date())) ?? Date()
@@ -200,7 +199,6 @@ public final class HabitsStore {
 }
 
 private extension Date {
-
     static func dates(from fromDate: Date, to toDate: Date) -> [Date] {
         var dates: [Date] = []
         var date = fromDate

@@ -8,9 +8,9 @@
 import UIKit
 
 class HabitsViewController: UIViewController {
-
+    
     private var habitsStore = HabitsStore.shared
-
+    
     private lazy var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -26,7 +26,7 @@ class HabitsViewController: UIViewController {
         )
         return layout
     }()
-
+    
     private lazy var habitsCollectionView: UICollectionView = {
         let collectionView = UICollectionView(
             frame: .zero,
@@ -47,14 +47,14 @@ class HabitsViewController: UIViewController {
         collectionView.delegate = self
         return collectionView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationBar()
         view.addSubview(habitsCollectionView)
         setConstraints()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         habitsCollectionView.reloadData()
     }
@@ -69,7 +69,7 @@ extension HabitsViewController {
             habitsCollectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-
+    
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Habits"
@@ -81,12 +81,12 @@ extension HabitsViewController {
         navigationItem.backButtonTitle = "Cancel"
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-                barButtonSystemItem: .add,
-                target: self,
-                action: #selector(addDidTapped)
-            )
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addDidTapped)
+        )
     }
-
+    
     @objc private func addDidTapped() {
         let addHabitVC = AddHabitViewController()
         addHabitVC.hidesBottomBarWhenPushed = true
@@ -99,16 +99,15 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
                         numberOfItemsInSection section: Int) -> Int {
         habitsStore.habits.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         didSelectItemAt indexPath: IndexPath) {
-        
         collectionView.deselectItem(at: indexPath, animated: true)
         let habitDetailVC = HabitDetailViewController()
         habitDetailVC.habit = habitsStore.habits[indexPath.row]
         navigationController?.pushViewController(habitDetailVC, animated: true)
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -122,7 +121,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         }
         return header
     }
-
+    
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dequeuedCell = collectionView.dequeueReusableCell(

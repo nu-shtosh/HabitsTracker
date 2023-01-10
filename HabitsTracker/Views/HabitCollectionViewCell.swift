@@ -26,7 +26,6 @@ class HabitCollectionViewCell: UICollectionViewCell {
         }
     }
 
-
     private lazy var counterText: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -62,20 +61,13 @@ class HabitCollectionViewCell: UICollectionViewCell {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.image = UIImage(systemName: "circle")
         imageView.tintColor = .red
-
         return imageView
     }()
 
     private lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(cgColor: CGColor(
-            red: 247 / 255,
-            green: 247 / 255,
-            blue: 247 / 255,
-            alpha: 0.8)
-        )
-
+        view.backgroundColor = UIColor(named: "customBack")
         view.addSubview(checkmark)
         view.addSubview(taskText)
         view.addSubview(dateText)
@@ -108,6 +100,7 @@ extension HabitCollectionViewCell {
 
     }
 }
+
 extension HabitCollectionViewCell {
     private func setConstraints() {
         NSLayoutConstraint.activate([

@@ -16,7 +16,6 @@ class DateTableViewCell: UITableViewCell {
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
-
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
