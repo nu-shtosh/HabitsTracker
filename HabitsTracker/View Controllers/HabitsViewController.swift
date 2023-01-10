@@ -132,7 +132,9 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
             fatalError("Wrong cell type for section 0. Expected CellType")
         }
         let habit = habitsStore.habits[indexPath.item]
-        cell.habit = habit
+        cell.setupCell(with: habit) {
+            self.habitsCollectionView.reloadData()
+        }
         return cell
     }
 }

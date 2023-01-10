@@ -10,21 +10,11 @@ import UIKit
 class HabitCollectionViewCell: UICollectionViewCell {
     static let identifier = "HabitCollectionViewCell"
 
-    var habit: Habit? {
-        didSet {
-            dateText.text = habit?.dateString
-            taskText.text = habit?.name
-            taskText.textColor = habit?.color
-            counterText.text = "Counter: \(habit?.trackDates.count ?? 0)"
-            imageGestureSettings(imageView: checkmark, and: habit)
-            if ((habit?.isAlreadyTakenToday) == true) {
-                checkmark.image = UIImage(systemName: "checkmark.circle.fill")
-            } else {
-                checkmark.image = UIImage(systemName: "circle")
-            }
-            checkmark.tintColor = habit?.color
-        }
-    }
+    let checkedImage = UIImage(systemName: "checkmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
+    let uncheckedImage = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
+
+    private var habit: Habit!
+    private var onStateButtonClick: (() -> Void)!
 
     private lazy var counterText: UILabel = {
         let textLabel = UILabel()
@@ -56,12 +46,13 @@ class HabitCollectionViewCell: UICollectionViewCell {
         return textLabel
     }()
 
-    private lazy var checkmark: UIImageView = {
-        let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(systemName: "circle")
-        imageView.tintColor = .red
-        return imageView
+    private lazy var checkmark: UIButton = {
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        button.addTarget(self, action: #selector(checkmarkDidTapped), for: .touchUpInside)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.layer.masksToBounds = true
+        button.clipsToBounds = true
+        return button
     }()
 
     private lazy var backView: UIView = {
@@ -85,19 +76,32 @@ class HabitCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-extension HabitCollectionViewCell {
-    private func imageGestureSettings(imageView: UIImageView, and habit: Habit?) {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(checkmarkDidTapped))
-        tapGesture.numberOfTapsRequired = 1
-        tapGesture.numberOfTouchesRequired = 1
-        imageView.isUserInteractionEnabled = true
-        imageView.addGestureRecognizer(tapGesture)
+    func setupCell(with habit: Habit, onStateButtonClick: @escaping () -> Void) {
+        self.habit = habit
+        self.onStateButtonClick = onStateButtonClick
+
+        dateText.text = habit.dateString
+
+        taskText.text = habit.name
+        taskText.textColor = habit.color
+
+        counterText.text = "Counter: \(habit.trackDates.count)"
+
+        if habit.isAlreadyTakenToday {
+            checkmark.setImage(checkedImage, for: .normal)
+        } else {
+            checkmark.setImage(uncheckedImage, for: .normal)
+        }
+        checkmark.tintColor = habit.color
     }
 
-    @objc private func checkmarkDidTapped() {
-
+    @objc func checkmarkDidTapped() {
+        if !habit.isAlreadyTakenToday {
+            checkmark.setImage(checkedImage, for: .normal)
+            HabitsStore.shared.track(habit)
+            onStateButtonClick()
+        }
     }
 }
 
