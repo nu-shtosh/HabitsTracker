@@ -73,12 +73,7 @@ extension HabitsViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Habits"
-        navBarAppearance.backgroundColor = UIColor(cgColor: CGColor(
-            red: 247 / 255,
-            green: 247 / 255,
-            blue: 247 / 255,
-            alpha: 0.8)
-        )
+        navBarAppearance.backgroundColor = UIColor(named: "customBack")
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance

@@ -17,7 +17,6 @@ class HabitDetailViewController: UIViewController {
         tableView.backgroundColor = .systemGray5
         tableView.register(DateTableViewCell.self, forCellReuseIdentifier: DateTableViewCell.identifier)
         return tableView
-
     }()
 
     private let dateFormatter: DateFormatter = {
@@ -27,7 +26,6 @@ class HabitDetailViewController: UIViewController {
         formatter.locale = Locale(identifier: "en-US")
         formatter.doesRelativeDateFormatting = true
         return formatter
-
     }()
 
     override func viewDidLoad() {
@@ -53,12 +51,7 @@ extension HabitDetailViewController {
         private func setupNavigationBar() {
             let navBarAppearance = UINavigationBarAppearance()
             title = habit?.name
-            navBarAppearance.backgroundColor = UIColor(cgColor: CGColor(
-                red: 247 / 255,
-                green: 247 / 255,
-                blue: 247 / 255,
-                alpha: 0.8)
-            )
+            navBarAppearance.backgroundColor = UIColor(named: "customBack")
             navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
             navigationController?.navigationBar.standardAppearance = navBarAppearance
             navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance

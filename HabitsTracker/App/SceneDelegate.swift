@@ -74,12 +74,7 @@ extension SceneDelegate {
     }
 
     private func setSettings(forTabBarController tabBarController: UITabBarController) {
-        tabBarController.tabBar.backgroundColor = UIColor(cgColor: CGColor(
-            red: 247 / 255,
-            green: 247 / 255,
-            blue: 247 / 255,
-            alpha: 0.8)
-        )
+        tabBarController.tabBar.backgroundColor = UIColor(named: "customBack")
         tabBarController.tabBar.unselectedItemTintColor = .systemGray
         tabBarController.tabBar.tintColor = UIColor(named: "customPurple")
         tabBarController.tabBar.barStyle = .default

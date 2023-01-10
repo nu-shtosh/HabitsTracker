@@ -11,7 +11,7 @@ class InfoViewController: UIViewController {
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = .systemGray5
         scrollView.addSubview(habitsText)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.contentSize = CGSize(width: .zero, height: UIScreen.main.bounds.height)
@@ -55,12 +55,7 @@ class InfoViewController: UIViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Information"
-        navBarAppearance.backgroundColor = UIColor(cgColor: CGColor(
-            red: 247 / 255,
-            green: 247 / 255,
-            blue: 247 / 255,
-            alpha: 0.8)
-        )
+        navBarAppearance.backgroundColor = UIColor(named: "customBack")
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
