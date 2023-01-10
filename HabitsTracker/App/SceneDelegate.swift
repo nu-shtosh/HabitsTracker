@@ -16,7 +16,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        window = UIWindow(windowScene: windowScene)
+        window?.makeKeyAndVisible()
+        window?.rootViewController = makeRootViewController()
+
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -50,3 +54,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+extension SceneDelegate {
+    private func makeRootViewController() -> UITabBarController {
+        let habitsVC = HabitsViewController()
+        let infoVC = InfoViewController()
+
+        let habitsNavBarVC = UINavigationController(rootViewController: habitsVC)
+        let infoNavBarVC = UINavigationController(rootViewController: infoVC)
+
+        setSettings(forViewControllers: habitsVC, infoVC)
+
+        let rootTabBarController = UITabBarController()
+        rootTabBarController.viewControllers = [habitsNavBarVC, infoNavBarVC]
+
+        setSettings(forTabBarController: rootTabBarController)
+
+        return rootTabBarController
+    }
+
+    private func setSettings(forTabBarController tabBarController: UITabBarController) {
+        tabBarController.tabBar.backgroundColor = UIColor(cgColor: CGColor(
+            red: 247 / 255,
+            green: 247 / 255,
+            blue: 247 / 255,
+            alpha: 0.8)
+        )
+        tabBarController.tabBar.unselectedItemTintColor = .systemGray
+        tabBarController.tabBar.tintColor = UIColor(named: "customPurple")
+        tabBarController.tabBar.barStyle = .default
+    }
+
+    private func setSettings(forViewControllers viewControllers: UIViewController...) {
+        viewControllers.forEach{ viewController in
+            if viewController is HabitsViewController {
+                viewController.tabBarItem.image = UIImage(systemName: "rectangle.split.1x2.fill")
+                viewController.tabBarItem.title = "Habits"
+            } else if viewController is InfoViewController {
+                viewController.tabBarItem.image =  UIImage(systemName: "info.square.fill")
+                viewController.tabBarItem.title = "Info"
+            }
+        }
+    }
+}
