@@ -52,7 +52,7 @@ extension HabitDetailViewController {
         let navBarAppearance = UINavigationBarAppearance()
         title = habit?.name
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")

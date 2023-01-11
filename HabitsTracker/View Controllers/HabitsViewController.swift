@@ -75,12 +75,13 @@ extension HabitsViewController {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Сегодня"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+//        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+        navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
-        navigationItem.backButtonTitle = "Отменить"
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
+        navigationItem.backButtonTitle = "Отменить"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Создать",
             style: .plain,

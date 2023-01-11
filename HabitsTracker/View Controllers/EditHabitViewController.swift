@@ -168,10 +168,10 @@ extension EditHabitViewController {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Править"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Сохранить",
             style: .plain,

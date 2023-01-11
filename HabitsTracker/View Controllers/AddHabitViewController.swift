@@ -154,7 +154,7 @@ extension AddHabitViewController {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Добавить"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+        navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
