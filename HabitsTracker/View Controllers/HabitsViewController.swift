@@ -53,6 +53,7 @@ class HabitsViewController: UIViewController {
         setupNavigationBar()
         view.addSubview(habitsCollectionView)
         setConstraints()
+        habitsCollectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,16 +73,17 @@ extension HabitsViewController {
     
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
-        title = "Habits"
+        title = "Сегодня"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
-        navigationItem.backButtonTitle = "Cancel"
+        navigationItem.backButtonTitle = "Отменить"
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
+            title: "Создать",
+            style: .plain,
             target: self,
             action: #selector(addDidTapped)
         )
@@ -119,6 +121,7 @@ extension HabitsViewController: UICollectionViewDataSource, UICollectionViewDele
         guard let header = dequeuedHeader as? ProgressCollectionViewHeader else {
             fatalError("Wrong header type for section 0. Expected HeaderType")
         }
+        header.setupHeader(with: habitsStore)
         return header
     }
     

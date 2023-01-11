@@ -14,7 +14,7 @@ class AddHabitViewController: UIViewController {
     private lazy var chooseTaskNameLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Input Task Name:"
+        label.text = "Название"
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
@@ -25,7 +25,7 @@ class AddHabitViewController: UIViewController {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.font = .systemFont(ofSize: 16, weight: .regular)
         textField.layer.masksToBounds = true
-        textField.placeholder = "Drink a water..."
+        textField.placeholder = "Пить воду, бегать, смотреть кино в 21:00..."
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = UIColor.gray.cgColor
@@ -38,7 +38,7 @@ class AddHabitViewController: UIViewController {
     private lazy var chooseColorLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Choose Color:"
+        label.text = "Цвет"
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
@@ -55,7 +55,7 @@ class AddHabitViewController: UIViewController {
     private lazy var chooseTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Choose time:"
+        label.text = "Время"
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .bold)
         return label
@@ -64,7 +64,7 @@ class AddHabitViewController: UIViewController {
     private lazy var everydayTimeLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "Everyday at:"
+        label.text = "Каждый день в: "
         label.textColor = .black
         label.font = .systemFont(ofSize: 16, weight: .regular)
         return label
@@ -152,14 +152,14 @@ extension AddHabitViewController {
 
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
-        title = "Add Habit"
+        title = "Добавить"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
+            title: "Сохранить",
             style: .plain,
             target: self,
             action: #selector(saveDidTapped)

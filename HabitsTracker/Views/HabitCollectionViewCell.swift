@@ -47,9 +47,10 @@ class HabitCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var checkmark: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         button.addTarget(self, action: #selector(checkmarkDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.setImage(checkedImage, for: .normal)
         button.layer.masksToBounds = true
         button.clipsToBounds = true
         return button
@@ -86,7 +87,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         taskText.text = habit.name
         taskText.textColor = habit.color
 
-        counterText.text = "Counter: \(habit.trackDates.count)"
+        counterText.text = "Счетчик: \(habit.trackDates.count)"
 
         if habit.isAlreadyTakenToday {
             checkmark.setImage(checkedImage, for: .normal)
@@ -113,8 +114,8 @@ extension HabitCollectionViewCell {
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             backView.heightAnchor.constraint(equalToConstant: 140),
 
-            checkmark.widthAnchor.constraint(equalToConstant: 50),
-            checkmark.heightAnchor.constraint(equalToConstant: 50),
+            checkmark.widthAnchor.constraint(equalToConstant: 100),
+            checkmark.heightAnchor.constraint(equalToConstant: 100),
             checkmark.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
             checkmark.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
 

@@ -11,8 +11,6 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
 
     static let identifier = "ProgressCollectionViewHeader"
 
-    private let habitsStore = HabitsStore.shared
-
     private lazy var motivationText: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -25,7 +23,6 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     private lazy var percentText: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
-        textLabel.text = (habitsStore.todayProgress * 100).formatted() + "%"
         textLabel.textColor = .lightGray
         textLabel.font = .systemFont(ofSize: 14, weight: .bold)
         return textLabel
@@ -38,7 +35,6 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
         progressView.clipsToBounds = true
         progressView.tintColor = UIColor(named: "customPurple")
         progressView.layer.cornerRadius = 3
-        progressView.setProgress(habitsStore.todayProgress, animated: true)
         return progressView
     }()
 
@@ -62,6 +58,12 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+
+    func setupHeader(with store: HabitsStore) {
+        self.percentText.text = (store.todayProgress * 100).formatted() + "%"
+        self.habitsProgressBar.setProgress(store.todayProgress, animated: true)
+    }
+    
 }
 
 extension ProgressCollectionViewHeader {

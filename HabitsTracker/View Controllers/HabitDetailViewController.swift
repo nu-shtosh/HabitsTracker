@@ -23,7 +23,7 @@ class HabitDetailViewController: UIViewController {
         let formatter = DateFormatter()
         formatter.dateStyle = .long
         formatter.timeStyle = .none
-        formatter.locale = Locale(identifier: "en-US")
+        formatter.locale = Locale(identifier: "ru-RU")
         formatter.doesRelativeDateFormatting = true
         return formatter
     }()
@@ -58,7 +58,8 @@ extension HabitDetailViewController {
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .edit,
+            title: "Править",
+            style: .plain,
             target: self,
             action: #selector(editDidTapped)
         )
@@ -80,7 +81,7 @@ extension HabitDetailViewController: UITableViewDataSource, UITableViewDelegate 
 
     func tableView(_ tableView: UITableView,
                    titleForHeaderInSection section: Int) -> String? {
-        return "ACTIVITY"
+        return "АКТИВНОСТЬ"
     }
 
     func tableView(_ tableView: UITableView,

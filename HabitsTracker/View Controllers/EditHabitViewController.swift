@@ -91,7 +91,7 @@ class EditHabitViewController: UIViewController {
 
     private lazy var removeButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Remove Habit", for: .normal)
+        button.setTitle("Удалить привычку", for: .normal)
         button.setTitleColor(UIColor.systemRed, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.addTarget(self, action: #selector(removeHabit), for: .touchUpInside)
@@ -166,14 +166,14 @@ extension EditHabitViewController {
 
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
-        title = "Edit Habit"
+        title = "Править"
         navBarAppearance.backgroundColor = UIColor(named: "customBack")
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Save",
+            title: "Сохранить",
             style: .plain,
             target: self,
             action: #selector(editDidTapped)
@@ -204,12 +204,12 @@ extension EditHabitViewController {
     private func showAlert() {
         let store = HabitsStore.shared
         let alert = UIAlertController(
-            title: "Removing habit",
-            message: "Do you want to remove habit \"\(taskNameLabel.text ?? "")\"?",
+            title: "Удалить привычку",
+            message: "Вы хотите удалить привычку \"\(taskNameLabel.text ?? "")\"?",
             preferredStyle: .alert
         )
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { _ in
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { _ in
             for (index, storageHabit) in store.habits.enumerated() {
                 if storageHabit.name == self.habit?.name {
                     store.habits.remove(at: index)

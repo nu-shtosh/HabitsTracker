@@ -82,10 +82,10 @@ extension SceneDelegate {
         viewControllers.forEach{ viewController in
             if viewController is HabitsViewController {
                 viewController.tabBarItem.image = UIImage(systemName: "rectangle.split.1x2.fill")
-                viewController.tabBarItem.title = "Habits"
+                viewController.tabBarItem.title = "Сегодня"
             } else if viewController is InfoViewController {
                 viewController.tabBarItem.image =  UIImage(systemName: "info.square.fill")
-                viewController.tabBarItem.title = "Info"
+                viewController.tabBarItem.title = "Информация"
             }
         }
     }
