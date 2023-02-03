@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B86C7988298D43B700F8AB63 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C7987298D43B700F8AB63 /* NotesViewController.swift */; };
 		B8B192922961F2AE000506CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192912961F2AE000506CF /* AppDelegate.swift */; };
 		B8B192942961F2AE000506CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192932961F2AE000506CF /* SceneDelegate.swift */; };
 		B8B192962961F2AE000506CF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192952961F2AE000506CF /* HabitsViewController.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B86C7987298D43B700F8AB63 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		B8B1928E2961F2AE000506CF /* HabitsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B192912961F2AE000506CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8B192932961F2AE000506CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -89,6 +91,7 @@
 				B8B192B229632431000506CF /* AddHabitViewController.swift */,
 				B8B192B8296DCE7F000506CF /* EditHabitViewController.swift */,
 				B8B192A52961F3CB000506CF /* InfoViewController.swift */,
+				B86C7987298D43B700F8AB63 /* NotesViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				B8B192A82961FC1B000506CF /* Habit.swift in Sources */,
 				B8B192B129624096000506CF /* HabitCollectionViewCell.swift in Sources */,
 				B8B192AF2961FDFA000506CF /* ProgressCollectionViewHeader.swift in Sources */,
+				B86C7988298D43B700F8AB63 /* NotesViewController.swift in Sources */,
 				B8B192B7296D6916000506CF /* DateTableViewCell.swift in Sources */,
 				B8B192922961F2AE000506CF /* AppDelegate.swift in Sources */,
 				B8B192A62961F3CB000506CF /* InfoViewController.swift in Sources */,
@@ -352,6 +356,7 @@
 				INFOPLIST_FILE = HabitsTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -382,6 +387,7 @@
 				INFOPLIST_FILE = HabitsTracker/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

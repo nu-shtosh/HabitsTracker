@@ -55,16 +55,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 extension SceneDelegate {
     private func makeRootViewController() -> UITabBarController {
+
         let habitsVC = HabitsViewController()
+        let notesVC = NotesViewController()
         let infoVC = InfoViewController()
-        
+
         let habitsNavBarVC = UINavigationController(rootViewController: habitsVC)
+        let notesNavBarVC = UINavigationController(rootViewController: notesVC)
         let infoNavBarVC = UINavigationController(rootViewController: infoVC)
         
-        setSettings(forViewControllers: habitsVC, infoVC)
+        setSettings(forViewControllers: habitsVC, infoVC, notesVC)
         
         let rootTabBarController = UITabBarController()
-        rootTabBarController.viewControllers = [habitsNavBarVC, infoNavBarVC]
+        rootTabBarController.viewControllers = [habitsNavBarVC, notesNavBarVC, infoNavBarVC]
         
         setSettings(forTabBarController: rootTabBarController)
         
@@ -72,9 +75,11 @@ extension SceneDelegate {
     }
     
     private func setSettings(forTabBarController tabBarController: UITabBarController) {
-        tabBarController.tabBar.backgroundColor = UIColor(named: "customBack")
+        tabBarController.tabBar.barTintColor = .white
+        tabBarController.tabBar.backgroundColor = .white
         tabBarController.tabBar.unselectedItemTintColor = .systemGray
-        tabBarController.tabBar.tintColor = UIColor(named: "customPurple")
+        tabBarController.tabBar.tintColor = .purple
+        tabBarController.tabBar.isTranslucent = false
         tabBarController.tabBar.barStyle = .default
     }
     
@@ -83,6 +88,9 @@ extension SceneDelegate {
             if viewController is HabitsViewController {
                 viewController.tabBarItem.image = UIImage(systemName: "rectangle.split.1x2.fill")
                 viewController.tabBarItem.title = "Сегодня"
+            } else if viewController is NotesViewController {
+                viewController.tabBarItem.image =  UIImage(systemName: "list.bullet.rectangle.fill")
+                viewController.tabBarItem.title = "Заметки"
             } else if viewController is InfoViewController {
                 viewController.tabBarItem.image =  UIImage(systemName: "info.square.fill")
                 viewController.tabBarItem.title = "Информация"

@@ -33,7 +33,7 @@ class HabitsViewController: UIViewController {
             collectionViewLayout: layout
         )
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.backgroundColor = .systemGray5
+        collectionView.backgroundColor = .systemGray6
         collectionView.register(
             ProgressCollectionViewHeader.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -74,13 +74,14 @@ extension HabitsViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Сегодня"
-        navBarAppearance.backgroundColor = UIColor(named: "customBack")
-//        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor(named: "customPurple") ?? .purple]
+        navBarAppearance.backgroundColor = .white
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationController?.navigationBar.tintColor = .purple
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.lightGray]
         navigationItem.backButtonTitle = "Отменить"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Создать",

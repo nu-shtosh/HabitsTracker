@@ -70,7 +70,7 @@ class EditHabitViewController: UIViewController {
         let textField = UITextField()
         timePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
         textField.inputView = timePicker
-        textField.textColor = UIColor(named: "customPurple")
+        textField.textColor = .purple
         textField.font = .systemFont(ofSize: 16, weight: .regular)
         textField.isEnabled = false
         let formatter = DateFormatter()
@@ -101,7 +101,7 @@ class EditHabitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         taskNameLabel.text = habit.name
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
         view.addSubview(chooseTaskNameLabel)
         view.addSubview(taskNameLabel)
         view.addSubview(chooseColorLabel)
@@ -160,17 +160,17 @@ extension EditHabitViewController {
             timePicker.heightAnchor.constraint(equalToConstant: 140),
 
             removeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            removeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -26)
+            removeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36)
         ])
     }
 
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Править"
-        navBarAppearance.backgroundColor = UIColor(named: "customBack")
+        navBarAppearance.backgroundColor = .white
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationController?.navigationBar.tintColor = .purple
         navigationItem.largeTitleDisplayMode = .never
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Сохранить",

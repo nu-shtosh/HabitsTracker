@@ -14,12 +14,15 @@ class DateTableViewCell: UITableViewCell {
     let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
+        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
+//        label.backgroundColor = UIColor(named: "customWhite")
         return label
     }()
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        contentView.backgroundColor = .white
         addSubview(dateLabel)
         setConstraints()
     }

@@ -59,7 +59,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     private lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "customBack")
+        view.backgroundColor = .white
         view.addSubview(checkmark)
         view.addSubview(taskText)
         view.addSubview(dateText)
@@ -112,10 +112,10 @@ extension HabitCollectionViewCell {
             backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            backView.heightAnchor.constraint(equalToConstant: 140),
+            backView.heightAnchor.constraint(equalToConstant: 120),
 
-            checkmark.widthAnchor.constraint(equalToConstant: 100),
-            checkmark.heightAnchor.constraint(equalToConstant: 100),
+            checkmark.widthAnchor.constraint(equalToConstant: 50),
+            checkmark.heightAnchor.constraint(equalToConstant: 50),
             checkmark.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
             checkmark.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
 

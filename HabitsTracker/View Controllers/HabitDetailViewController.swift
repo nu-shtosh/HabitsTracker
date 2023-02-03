@@ -14,7 +14,7 @@ class HabitDetailViewController: UIViewController {
     private let habitDetailTableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .systemGray5
+        tableView.backgroundColor = .systemGray6
         tableView.register(DateTableViewCell.self, forCellReuseIdentifier: DateTableViewCell.identifier)
         return tableView
     }()
@@ -51,12 +51,13 @@ extension HabitDetailViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = habit?.name
-        navBarAppearance.backgroundColor = UIColor(named: "customBack")
+        navBarAppearance.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationController?.navigationBar.tintColor = .purple
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Править",
             style: .plain,
@@ -84,6 +85,9 @@ extension HabitDetailViewController: UITableViewDataSource, UITableViewDelegate 
         return "АКТИВНОСТЬ"
     }
 
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//    }
+
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let dequeuedCell = tableView.dequeueReusableCell(
@@ -105,6 +109,7 @@ extension HabitDetailViewController: UITableViewDataSource, UITableViewDelegate 
                 isTrackedIn: HabitsStore.shared.dates[HabitsStore.shared.dates.count - indexPath.row - 1]
             )
             if isTracked {
+                cell.backgroundColor = UIColor(named: "customWhite")
                 cell.accessoryType = .checkmark
                 cell.tintColor = UIColor(named: "customPurple")
             }

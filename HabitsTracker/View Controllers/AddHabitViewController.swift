@@ -74,7 +74,7 @@ class AddHabitViewController: UIViewController {
         let textField = UITextField()
         timePicker.addTarget(self, action: #selector(dateChanged), for: .valueChanged)
         textField.inputView = timePicker
-        textField.textColor = UIColor(named: "customPurple")
+        textField.textColor = .purple
         textField.font = .systemFont(ofSize: 16, weight: .regular)
         textField.isEnabled = false
         let formatter = DateFormatter()
@@ -95,7 +95,7 @@ class AddHabitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .systemGray6
         view.addSubview(chooseTaskNameLabel)
         view.addSubview(taskNameTextField)
         view.addSubview(chooseColorLabel)
@@ -153,7 +153,7 @@ extension AddHabitViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Добавить"
-        navBarAppearance.backgroundColor = UIColor(named: "customBack")
+        navBarAppearance.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance

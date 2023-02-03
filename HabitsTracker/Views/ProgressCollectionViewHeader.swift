@@ -31,9 +31,9 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     private lazy var habitsProgressBar: UIProgressView = {
         let progressView = UIProgressView(progressViewStyle: .bar)
         progressView.translatesAutoresizingMaskIntoConstraints = false
-        progressView.trackTintColor = .systemGray4
+        progressView.trackTintColor = .systemGray5
         progressView.clipsToBounds = true
-        progressView.tintColor = UIColor(named: "customPurple")
+        progressView.tintColor = .purple
         progressView.layer.cornerRadius = 3
         return progressView
     }()
@@ -41,7 +41,7 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     private lazy var backView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(named: "customBack")
+        view.backgroundColor = .white
         view.addSubview(motivationText)
         view.addSubview(percentText)
         view.addSubview(habitsProgressBar)
