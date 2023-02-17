@@ -18,12 +18,6 @@ class HabitsViewController: UIViewController {
             width: view.frame.size.width,
             height: view.frame.size.height / 5.5
         )
-        layout.sectionInset = UIEdgeInsets.init(
-            top: 0,
-            left: 0,
-            bottom: 0,
-            right: 0
-        )
         return layout
     }()
     

@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B86BD39A299E868E009D0610 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BD399299E868E009D0610 /* Extensions.swift */; };
+		B86BD39D299F8438009D0610 /* NoteCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86BD39C299F8438009D0610 /* NoteCollectionViewCell.swift */; };
 		B86C7988298D43B700F8AB63 /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C7987298D43B700F8AB63 /* NotesViewController.swift */; };
+		B86C798A298D51A900F8AB63 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C7989298D51A900F8AB63 /* AddNoteViewController.swift */; };
+		B86C798C298D51FA00F8AB63 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = B86C798B298D51FA00F8AB63 /* Note.swift */; };
 		B8B192922961F2AE000506CF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192912961F2AE000506CF /* AppDelegate.swift */; };
 		B8B192942961F2AE000506CF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192932961F2AE000506CF /* SceneDelegate.swift */; };
 		B8B192962961F2AE000506CF /* HabitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B192952961F2AE000506CF /* HabitsViewController.swift */; };
@@ -24,7 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B86BD399299E868E009D0610 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		B86BD39C299F8438009D0610 /* NoteCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteCollectionViewCell.swift; sourceTree = "<group>"; };
 		B86C7987298D43B700F8AB63 /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
+		B86C7989298D51A900F8AB63 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
+		B86C798B298D51FA00F8AB63 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		B8B1928E2961F2AE000506CF /* HabitsTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HabitsTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B8B192912961F2AE000506CF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B8B192932961F2AE000506CF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +61,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B86BD395299CEEAA009D0610 /* Habits */ = {
+			isa = PBXGroup;
+			children = (
+				B8B192AD2961FDDB000506CF /* Components */,
+				B8B192952961F2AE000506CF /* HabitsViewController.swift */,
+				B8B192B429644C31000506CF /* HabitDetailViewController.swift */,
+				B8B192B229632431000506CF /* AddHabitViewController.swift */,
+				B8B192B8296DCE7F000506CF /* EditHabitViewController.swift */,
+			);
+			path = Habits;
+			sourceTree = "<group>";
+		};
+		B86BD396299CEEBB009D0610 /* Notes */ = {
+			isa = PBXGroup;
+			children = (
+				B86BD39B299F8405009D0610 /* Components */,
+				B86C7987298D43B700F8AB63 /* NotesViewController.swift */,
+				B86C7989298D51A900F8AB63 /* AddNoteViewController.swift */,
+			);
+			path = Notes;
+			sourceTree = "<group>";
+		};
+		B86BD397299CEEC5009D0610 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				B8B192A52961F3CB000506CF /* InfoViewController.swift */,
+			);
+			path = Info;
+			sourceTree = "<group>";
+		};
+		B86BD398299E867B009D0610 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				B86BD399299E868E009D0610 /* Extensions.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		B86BD39B299F8405009D0610 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B86BD39C299F8438009D0610 /* NoteCollectionViewCell.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		B8B192852961F2AE000506CF = {
 			isa = PBXGroup;
 			children = (
@@ -75,8 +129,8 @@
 				B8B1929F2961F2AE000506CF /* Info.plist */,
 				B8B1929A2961F2AE000506CF /* Assets.xcassets */,
 				B8B192AA2961FDAA000506CF /* App */,
+				B86BD398299E867B009D0610 /* Helpers */,
 				B8B192AC2961FDB7000506CF /* Storyboards */,
-				B8B192AD2961FDDB000506CF /* Views */,
 				B8B192A92961FD9D000506CF /* View Controllers */,
 				B8B192AB2961FDAF000506CF /* Models */,
 			);
@@ -86,12 +140,9 @@
 		B8B192A92961FD9D000506CF /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8B192952961F2AE000506CF /* HabitsViewController.swift */,
-				B8B192B429644C31000506CF /* HabitDetailViewController.swift */,
-				B8B192B229632431000506CF /* AddHabitViewController.swift */,
-				B8B192B8296DCE7F000506CF /* EditHabitViewController.swift */,
-				B8B192A52961F3CB000506CF /* InfoViewController.swift */,
-				B86C7987298D43B700F8AB63 /* NotesViewController.swift */,
+				B86BD395299CEEAA009D0610 /* Habits */,
+				B86BD396299CEEBB009D0610 /* Notes */,
+				B86BD397299CEEC5009D0610 /* Info */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -109,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				B8B192A72961FC1B000506CF /* Habit.swift */,
+				B86C798B298D51FA00F8AB63 /* Note.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -121,14 +173,14 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
-		B8B192AD2961FDDB000506CF /* Views */ = {
+		B8B192AD2961FDDB000506CF /* Components */ = {
 			isa = PBXGroup;
 			children = (
 				B8B192AE2961FDFA000506CF /* ProgressCollectionViewHeader.swift */,
 				B8B192B029624096000506CF /* HabitCollectionViewCell.swift */,
 				B8B192B6296D6916000506CF /* DateTableViewCell.swift */,
 			);
-			path = Views;
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,11 +257,15 @@
 				B8B192962961F2AE000506CF /* HabitsViewController.swift in Sources */,
 				B8B192A82961FC1B000506CF /* Habit.swift in Sources */,
 				B8B192B129624096000506CF /* HabitCollectionViewCell.swift in Sources */,
+				B86BD39D299F8438009D0610 /* NoteCollectionViewCell.swift in Sources */,
 				B8B192AF2961FDFA000506CF /* ProgressCollectionViewHeader.swift in Sources */,
 				B86C7988298D43B700F8AB63 /* NotesViewController.swift in Sources */,
 				B8B192B7296D6916000506CF /* DateTableViewCell.swift in Sources */,
 				B8B192922961F2AE000506CF /* AppDelegate.swift in Sources */,
 				B8B192A62961F3CB000506CF /* InfoViewController.swift in Sources */,
+				B86C798C298D51FA00F8AB63 /* Note.swift in Sources */,
+				B86BD39A299E868E009D0610 /* Extensions.swift in Sources */,
+				B86C798A298D51A900F8AB63 /* AddNoteViewController.swift in Sources */,
 				B8B192942961F2AE000506CF /* SceneDelegate.swift in Sources */,
 				B8B192B9296DCE7F000506CF /* EditHabitViewController.swift in Sources */,
 				B8B192B329632431000506CF /* AddHabitViewController.swift in Sources */,

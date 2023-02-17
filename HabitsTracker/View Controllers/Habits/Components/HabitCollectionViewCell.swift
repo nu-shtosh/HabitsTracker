@@ -47,7 +47,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
     }()
 
     private lazy var checkmark: UIButton = {
-        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
+        let button = UIButton()
         button.addTarget(self, action: #selector(checkmarkDidTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setImage(checkedImage, for: .normal)
@@ -60,6 +60,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.layer.borderColor = UIColor.systemGray3.cgColor
+        view.layer.borderWidth = 1
         view.addSubview(checkmark)
         view.addSubview(taskText)
         view.addSubview(dateText)

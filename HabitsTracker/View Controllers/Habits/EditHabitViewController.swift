@@ -44,6 +44,9 @@ class EditHabitViewController: UIViewController {
         let colorWell = UIColorWell()
         colorWell.translatesAutoresizingMaskIntoConstraints = false
         colorWell.supportsAlpha = true
+        colorWell.layer.borderColor = UIColor.systemGray3.cgColor
+        colorWell.layer.borderWidth = 1
+        colorWell.layer.cornerRadius = 12
         colorWell.selectedColor = .purple
         return colorWell
     }()
@@ -84,7 +87,9 @@ class EditHabitViewController: UIViewController {
         let picker = UIDatePicker()
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.datePickerMode = .time
-        picker.layer.cornerRadius = 20
+        picker.layer.cornerRadius = 12
+        picker.layer.borderColor = UIColor.systemGray3.cgColor
+        picker.layer.borderWidth = 1
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()

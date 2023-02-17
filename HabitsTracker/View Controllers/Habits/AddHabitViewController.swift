@@ -28,7 +28,7 @@ class AddHabitViewController: UIViewController {
         textField.placeholder = "Пить воду, бегать, смотреть кино в 21:00..."
         textField.backgroundColor = .white
         textField.layer.cornerRadius = 12
-        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.layer.borderColor = UIColor.systemGray3.cgColor
         textField.layer.borderWidth = 1
         textField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: textField.frame.height))
         textField.leftViewMode = .always
@@ -48,6 +48,9 @@ class AddHabitViewController: UIViewController {
         let colorWell = UIColorWell()
         colorWell.translatesAutoresizingMaskIntoConstraints = false
         colorWell.supportsAlpha = true
+        colorWell.layer.cornerRadius = 12
+        colorWell.layer.borderColor = UIColor.systemGray3.cgColor
+        colorWell.layer.borderWidth = 1
         colorWell.selectedColor = .purple
         return colorWell
     }()
@@ -89,6 +92,8 @@ class AddHabitViewController: UIViewController {
         picker.translatesAutoresizingMaskIntoConstraints = false
         picker.datePickerMode = .time
         picker.layer.cornerRadius = 20
+        picker.layer.borderColor = UIColor.systemGray3.cgColor
+        picker.layer.borderWidth = 1
         picker.preferredDatePickerStyle = .wheels
         return picker
     }()
@@ -157,7 +162,7 @@ extension AddHabitViewController {
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
-        navigationController?.navigationBar.tintColor = UIColor(named: "customPurple")
+        navigationController?.navigationBar.tintColor = .purple
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Сохранить",
             style: .plain,
@@ -177,7 +182,15 @@ extension AddHabitViewController {
             )
             navigationController?.popToRootViewController(animated: true)
         } else {
-
+            taskNameTextField.placeholder = "У привычки должно быть название..."
+            taskNameTextField.shake()
         }
+    }
+}
+
+extension AddHabitViewController {
+    open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super .touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
 }

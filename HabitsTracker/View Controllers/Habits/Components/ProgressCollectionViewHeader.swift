@@ -42,6 +42,8 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .white
+        view.layer.borderColor = UIColor.systemGray3.cgColor
+        view.layer.borderWidth = 1
         view.addSubview(motivationText)
         view.addSubview(percentText)
         view.addSubview(habitsProgressBar)
@@ -60,7 +62,7 @@ class ProgressCollectionViewHeader: UICollectionReusableView {
     }
 
     func setupHeader(with store: HabitsStore) {
-        self.percentText.text = (store.todayProgress * 100).formatted() + "%"
+        self.percentText.text = Int(store.todayProgress * 100).formatted() + "%"
         self.habitsProgressBar.setProgress(store.todayProgress, animated: true)
     }
     
