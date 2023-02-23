@@ -11,12 +11,12 @@ class DateTableViewCell: UITableViewCell {
 
     static let identifier = "DateTableViewCell"
 
-    let dateLabel: UILabel = {
+    lazy var dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 17, weight: .regular)
         label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
-//        label.backgroundColor = UIColor(named: "customWhite")
+        label.backgroundColor = .white
         return label
     }()
 

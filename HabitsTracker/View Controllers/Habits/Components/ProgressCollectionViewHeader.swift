@@ -76,15 +76,15 @@ extension ProgressCollectionViewHeader {
             backView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             backView.heightAnchor.constraint(equalToConstant: 70),
 
-            motivationText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 16),
-            motivationText.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 16),
+            motivationText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 12),
+            motivationText.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
 
-            percentText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 16),
-            percentText.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
+            percentText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 12),
+            percentText.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
             habitsProgressBar.topAnchor.constraint(equalTo: motivationText.bottomAnchor, constant: 10),
-            habitsProgressBar.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 16),
-            habitsProgressBar.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
+            habitsProgressBar.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
+            habitsProgressBar.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
             habitsProgressBar.heightAnchor.constraint(equalToConstant: 6)
         ])
     }

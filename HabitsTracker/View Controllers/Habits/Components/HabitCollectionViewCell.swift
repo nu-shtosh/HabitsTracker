@@ -10,8 +10,8 @@ import UIKit
 class HabitCollectionViewCell: UICollectionViewCell {
     static let identifier = "HabitCollectionViewCell"
 
-    let checkedImage = UIImage(systemName: "checkmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
-    let uncheckedImage = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
+    private let checkedImage = UIImage(systemName: "checkmark.circle.fill")?.withRenderingMode(.alwaysTemplate)
+    private let uncheckedImage = UIImage(systemName: "circle")?.withRenderingMode(.alwaysTemplate)
 
     private var habit: Habit!
     private var onStateButtonClick: (() -> Void)!
@@ -36,7 +36,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         return textLabel
     }()
 
-    private lazy var taskText: UILabel = {
+    private lazy var habitText: UILabel = {
         let textLabel = UILabel()
         textLabel.translatesAutoresizingMaskIntoConstraints = false
         textLabel.text = "task"
@@ -63,7 +63,7 @@ class HabitCollectionViewCell: UICollectionViewCell {
         view.layer.borderColor = UIColor.systemGray3.cgColor
         view.layer.borderWidth = 1
         view.addSubview(checkmark)
-        view.addSubview(taskText)
+        view.addSubview(habitText)
         view.addSubview(dateText)
         view.addSubview(counterText)
         view.layer.cornerRadius = 20
@@ -86,8 +86,8 @@ class HabitCollectionViewCell: UICollectionViewCell {
 
         dateText.text = habit.dateString
 
-        taskText.text = habit.name
-        taskText.textColor = habit.color
+        habitText.text = habit.name
+        habitText.textColor = habit.color
 
         counterText.text = "Счетчик: \(habit.trackDates.count)"
 
@@ -114,22 +114,22 @@ extension HabitCollectionViewCell {
             backView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             backView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             backView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            backView.heightAnchor.constraint(equalToConstant: 120),
+            backView.heightAnchor.constraint(equalToConstant: 110),
 
             checkmark.widthAnchor.constraint(equalToConstant: 50),
             checkmark.heightAnchor.constraint(equalToConstant: 50),
             checkmark.centerYAnchor.constraint(equalTo: backView.centerYAnchor),
-            checkmark.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -16),
+            checkmark.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -12),
 
-            taskText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 16),
-            taskText.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 16),
-            taskText.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -40),
+            habitText.topAnchor.constraint(equalTo: backView.topAnchor, constant: 12),
+            habitText.leadingAnchor.constraint(equalTo: backView.leadingAnchor, constant: 12),
+            habitText.trailingAnchor.constraint(equalTo: backView.trailingAnchor, constant: -40),
 
-            dateText.topAnchor.constraint(equalTo: taskText.bottomAnchor,constant: 5),
-            dateText.leadingAnchor.constraint(equalTo: backView.leadingAnchor,constant: 16),
+            dateText.topAnchor.constraint(equalTo: habitText.bottomAnchor,constant: 4),
+            dateText.leadingAnchor.constraint(equalTo: backView.leadingAnchor,constant: 12),
 
-            counterText.leadingAnchor.constraint(equalTo: backView.leadingAnchor,constant: 16),
-            counterText.bottomAnchor.constraint(equalTo: backView.bottomAnchor,constant: -16),
+            counterText.leadingAnchor.constraint(equalTo: backView.leadingAnchor,constant: 12),
+            counterText.bottomAnchor.constraint(equalTo: backView.bottomAnchor,constant: -12),
         ])
     }
 }

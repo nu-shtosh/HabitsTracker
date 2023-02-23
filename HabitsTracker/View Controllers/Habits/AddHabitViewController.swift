@@ -158,11 +158,13 @@ extension AddHabitViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Добавить"
+
         navBarAppearance.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = .purple
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Сохранить",
             style: .plain,

@@ -18,6 +18,17 @@ class HabitsViewController: UIViewController {
             width: view.frame.size.width,
             height: view.frame.size.height / 5.5
         )
+
+        layout.minimumInteritemSpacing = 0
+        layout.minimumLineSpacing = 0
+
+        layout.sectionInset = UIEdgeInsets.init(
+            top: 0,
+            left: 0,
+            bottom: 0,
+            right: 0
+        )
+
         return layout
     }()
     
@@ -68,6 +79,7 @@ extension HabitsViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = "Сегодня"
+
         navBarAppearance.backgroundColor = .white
         navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -76,6 +88,7 @@ extension HabitsViewController {
         navigationController?.navigationBar.tintColor = .purple
         navigationController?.navigationBar.layer.borderColor = UIColor.black.cgColor
         navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.lightGray]
+
         navigationItem.backButtonTitle = "Отменить"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             title: "Создать",

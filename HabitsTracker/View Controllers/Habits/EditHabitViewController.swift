@@ -164,8 +164,8 @@ extension EditHabitViewController {
             timePicker.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
             timePicker.heightAnchor.constraint(equalToConstant: 140),
 
-            removeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            removeButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -36)
+            removeButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            removeButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -36)
         ])
     }
 

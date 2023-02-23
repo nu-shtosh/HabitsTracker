@@ -1,13 +1,15 @@
 //
-//  AddNoteViewController.swift
+//  NoteDetailViewController.swift
 //  HabitsTracker
 //
-//  Created by Илья Дубенский on 03.02.2023.
+//  Created by Илья Дубенский on 18.02.2023.
 //
 
 import UIKit
 
-class AddNoteViewController: UIViewController {
+class NoteDetailViewController: UIViewController {
+
+    var note: Note!
 
     private lazy var noteNameLabel: UILabel = {
         let label = UILabel()
@@ -47,14 +49,10 @@ class AddNoteViewController: UIViewController {
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.backgroundColor = .white
 
-        textView.text = "Купить молоко, посмотреть фильм \"Человек паук\", сделать приложение..."
-
         textView.font = .systemFont(ofSize: 14)
         textView.layer.cornerRadius = 12
         textView.layer.borderColor = UIColor.systemGray3.cgColor
         textView.layer.borderWidth = 1
-
-        textView.textColor = UIColor.systemGray3
 
         textView.isSelectable = true
         textView.isEditable = true
@@ -71,7 +69,7 @@ class AddNoteViewController: UIViewController {
     }()
 
     private var notePrioritySegmentControl: UISegmentedControl = {
-        let segmentControl = UISegmentedControl(items: ["!", "!!", "!!!"])
+        let segmentControl = UISegmentedControl(items: ["!", "!!", "!!!", "Выполнено"])
         segmentControl.translatesAutoresizingMaskIntoConstraints = false
         segmentControl.selectedSegmentIndex = 0
         segmentControl.layer.borderWidth = 1
@@ -80,18 +78,34 @@ class AddNoteViewController: UIViewController {
         return segmentControl
     }()
 
+    private lazy var removeNoteButton: UIButton = {
+        let button = UIButton()
+        button.setTitle("Удалить заметку", for: .normal)
+        button.setTitleColor(UIColor.systemRed, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(removeNote), for: .touchUpInside)
+        return button
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMainView()
+        setupViews()
         addSubviews()
         setConstraints()
         setupNavigationBar()
     }
+
+    private func setupViews() {
+        noteDescriptionTextView.becomeFirstResponder()
+        noteNameTextField.text = note.title
+        noteDescriptionTextView.text = note.text
+        notePrioritySegmentControl.selectedSegmentIndex = Int(note.priority)
+    }
 }
 
-extension AddNoteViewController {
+extension NoteDetailViewController {
     private func setupMainView() {
-        self.noteDescriptionTextView.delegate = self
         view.backgroundColor = .systemGray6
     }
 
@@ -102,6 +116,8 @@ extension AddNoteViewController {
         view.addSubview(noteDescriptionTextView)
         view.addSubview(notePriorityLabel)
         view.addSubview(notePrioritySegmentControl)
+        view.addSubview(removeNoteButton)
+
     }
 
     private func setConstraints() {
@@ -127,19 +143,22 @@ extension AddNoteViewController {
 
             notePrioritySegmentControl.topAnchor.constraint(equalTo: notePriorityLabel.bottomAnchor, constant: 8),
             notePrioritySegmentControl.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-            notePrioritySegmentControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+            notePrioritySegmentControl.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+
+            removeNoteButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            removeNoteButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -36)
         ])
     }
 
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
-        title = "Добавить заметку"
+        title = "Детально"
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
         navigationController?.navigationBar.scrollEdgeAppearance = navBarAppearance
         navigationController?.navigationBar.tintColor = .purple
         navigationItem.rightBarButtonItem = UIBarButtonItem(
-            title: "Сохранить",
+            title: "Править",
             style: .plain,
             target: self,
             action: #selector(saveDidTapped)
@@ -148,16 +167,14 @@ extension AddNoteViewController {
 
     @objc func saveDidTapped() {
         guard let title = noteNameTextField.text else { return }
-        guard var text = noteDescriptionTextView.text else { return }
-        if text == "Купить молоко, посмотреть фильм \"Человек паук\", сделать приложение..." {
-            text = ""
-        }
+        guard let text = noteDescriptionTextView.text else { return }
         let priority = notePrioritySegmentControl.selectedSegmentIndex
         if title != "" {
-            StorageManager.shared.createNote(
+            StorageManager.shared.updateNote(
+                note,
                 withTitle: title,
                 text: text,
-                andPriority: Int16(priority))
+                and: Int16(priority))
             navigationController?.popToRootViewController(animated: true)
         } else {
             noteNameTextField.placeholder = "У заметки должно быть название..."
@@ -166,26 +183,31 @@ extension AddNoteViewController {
     }
 }
 
-extension AddNoteViewController: UITextViewDelegate {
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.textColor == UIColor.systemGray3 {
-            textView.text = ""
-            textView.textColor = UIColor.black
-        }
-    }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "Купить молоко, посмотреть фильм \"Человек паук\", сделать приложение..."
-            textView.textColor = UIColor.systemGray3
-        }
-    }
-}
-
 // MARK: - Hide Keyboard
-extension AddNoteViewController {
+extension NoteDetailViewController {
     open override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super .touchesBegan(touches, with: event)
         view.endEditing(true)
+    }
+}
+
+extension NoteDetailViewController {
+    @objc func removeNote() {
+        showAlert()
+    }
+
+    private func showAlert() {
+        guard let title = noteNameTextField.text else { return }
+        let alert = UIAlertController(
+            title: "Удалить заметку",
+            message: "Вы хотите удалить заметку \"\(title)\"?",
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: "Отмена", style: .cancel))
+        alert.addAction(UIAlertAction(title: "Удалить", style: .destructive, handler: { _ in
+            StorageManager.shared.deleteNote(self.note)
+            self.navigationController?.popToRootViewController(animated: true)
+        }))
+        present(alert, animated: true)
     }
 }

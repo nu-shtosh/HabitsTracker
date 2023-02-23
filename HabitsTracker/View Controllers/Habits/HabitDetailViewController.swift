@@ -51,6 +51,7 @@ extension HabitDetailViewController {
     private func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
         title = habit?.name
+        
         navBarAppearance.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
         navigationController?.navigationBar.standardAppearance = navBarAppearance
@@ -84,9 +85,6 @@ extension HabitDetailViewController: UITableViewDataSource, UITableViewDelegate 
                    titleForHeaderInSection section: Int) -> String? {
         return "АКТИВНОСТЬ"
     }
-
-//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-//    }
 
     func tableView(_ tableView: UITableView,
                    cellForRowAt indexPath: IndexPath) -> UITableViewCell {
