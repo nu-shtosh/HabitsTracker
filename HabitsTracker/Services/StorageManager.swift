@@ -61,6 +61,7 @@ class StorageManager {
         note.text = text
         note.priority = priority
         note.date = Date()
+        note.isComplete = false
         saveContext()
     }
 
@@ -77,5 +78,9 @@ class StorageManager {
         note.priority = priority
         saveContext()
     }
-    
+
+    func done(note: Note) {
+        note.isComplete.toggle()
+        saveContext()
+    }
 }
