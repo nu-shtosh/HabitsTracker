@@ -22,3 +22,14 @@
 <a href="">![XCODE](https://img.shields.io/badge/-XCODE-blueviolet)</a>
 <a href="">![IOS](https://img.shields.io/badge/-iOS-blue)</a>
 <a href="">![IOS](https://img.shields.io/badge/-UIkit-yellow)</a>
+
+
+#### Screens
+
+<div align="left">
+
+  <img src="https://github.com/nu-shtosh/HabitsTracker/blob/main/Screens/notes.png" width="200"/>
+  <img src="https://github.com/nu-shtosh/HabitsTracker/blob/main/Screens/today.png" width="190"/>
+  <img src="https://github.com/nu-shtosh/HabitsTracker/blob/main/Screens/addedit.png" width="200"/>
+
+</div>
